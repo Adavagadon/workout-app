@@ -7,12 +7,12 @@ const User = sequelize.define('user', {
     autoIncrement: true,
     primaryKey: true,
   },
-  nickName: {
+  username: {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
   password: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING,
     allowNull: false,
   },
   firstName: {
