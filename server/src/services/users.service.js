@@ -1,6 +1,7 @@
 import sharp from 'sharp';
 import { Buffer } from 'node:buffer';
 import User from '../models/User.js';
+import Setting from '../models/Setting.js';
 
 const FORMAT = 'webp';
 const ENCODING = 'base64';
@@ -21,11 +22,13 @@ class UsersService {
   }
 
   async updateUser(id, data) {
-    return User.update(data, { where: { id } });
+    const [result] = await User.update(data, { where: { id } });
+    return result;
   }
 
   async deleteUser(id) {
-    return User.destroy({ where: { id } });
+    await Setting.destroy({ where: { userId: id } });
+    return await User.destroy({ where: { id } });
   }
 }
 
