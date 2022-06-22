@@ -6,10 +6,12 @@ const Setting = sequelize.define('setting', {
   setInterval: {
     type: DataTypes.STRING(50),
     allowNull: false,
+    defaultValue: '45 sec',
   },
   excerciseInterval: {
     type: DataTypes.STRING(50),
     allowNull: false,
+    defaultValue: '1 m',
   },
 });
 

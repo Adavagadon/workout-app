@@ -19,7 +19,7 @@ class UsersController {
 
   async updateUser(req, res) {
     if (!req.body.id || !req.body.data)
-      return res.status(400).send({ message: 'User id is required.' });
+      return res.status(400).send({ message: 'Some data is missing.' });
 
     try {
       const resp = await usersService.updateUser(req.body.id, req.body.data);

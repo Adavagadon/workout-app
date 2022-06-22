@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import Setting from '../models/Setting.js';
 
 class AuthService {
   async findUser(username) {
@@ -9,6 +10,7 @@ class AuthService {
 
   async createUser(user) {
     const res = await User.create(user);
+    Setting.create({ userId: res.dataValues.id });
     return res.dataValues;
   }
 
