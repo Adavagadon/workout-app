@@ -24,10 +24,10 @@ const User = sequelize.define('user', {
     allowNull: false,
   },
   mdImgBuffer: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(8192),
   },
   smImgBuffer: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(8192),
   },
 });
 
