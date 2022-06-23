@@ -1,4 +1,5 @@
 import Training from '../models/Training.js';
+import Excercise from '../models/Excercise.js';
 
 class TrainingsService {
   async getTrainings(id) {
@@ -17,6 +18,7 @@ class TrainingsService {
   }
 
   async deleteTraining(id) {
+    await Excercise.destroy({ where: { trainingId: id } });
     return await Training.destroy({ where: { id } });
   }
 }
