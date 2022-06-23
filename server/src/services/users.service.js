@@ -7,6 +7,10 @@ const FORMAT = 'webp';
 const ENCODING = 'base64';
 
 class UsersService {
+  async getUser(id) {
+    return await User.findByPk(id, { raw: true });
+  }
+
   async updateImage(image, id) {
     const buffer = Buffer.from(image.buffer);
     const mdBuffer = await sharp(buffer).resize(512, 512)[FORMAT]().toBuffer();
