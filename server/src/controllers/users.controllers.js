@@ -1,6 +1,24 @@
 import usersService from '../services/users.service.js';
 
 class UsersController {
+  async getUser(req, res) {
+    if (!req.body.id)
+      return res.status(400).send({ message: 'User id is required.' });
+
+    try {
+      const resp = await usersService.getUser(req.body.id);
+
+      if (!resp) return res.status(404).send({ message: 'User not found.' });
+
+      delete resp.password;
+
+      res.send(resp);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({ message: err.message });
+    }
+  }
+
   async updateImage(req, res) {
     if (!req.file || !req.body.id)
       return res.status(400).send({ message: 'Some data is missing.' });

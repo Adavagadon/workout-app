@@ -9,6 +9,7 @@ router.put('/image', upload.single('image'), usersControllers.updateImage);
 
 router
   .route('/')
+  .get(usersControllers.getUser)
   .put(usersControllers.updateUser)
   .delete(usersControllers.deleteUser);
 
